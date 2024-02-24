@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+const BasicForm = () => {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [allEntry, setAllEntry] = useState([]);
+  const submitForm = (e) => {
+    e.preventDefault();
+    const newEntry = {
+      id: new Date().getTime().toString(),
+      Email: email,
+      Password: pass,
+    };
+    setAllEntry([...allEntry, newEntry]);
+    setEmail("");
+    setPass("");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form action="" onSubmit={submitForm}>
+        <div>
+          <h1>Full Name Display</h1>
+          <label htmlFor="email">First Name</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Last Name</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+      <div>
+        {allEntry.map((ele) => {
+          const { id, Email, Password } = ele;
+          return (
+            <div key={id}>
+              <p>Full Name :{Email} {Password}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
-}
-
-export default App;
+};
+export default BasicForm;
