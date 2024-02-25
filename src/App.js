@@ -69,6 +69,10 @@ const App = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+    if (firstName.trim() === "" || lastName.trim() === "") {
+      // Handle empty submission gracefully, maybe display an error message
+      return;
+    }
     const newEntry = {
       id: new Date().getTime().toString(),
       firstName: firstName,
