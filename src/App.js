@@ -70,7 +70,6 @@ const App = () => {
   const submitForm = (e) => {
     e.preventDefault();
     if (firstName.trim() === "" || lastName.trim() === "") {
-      // Handle empty submission gracefully, maybe display an error message
       return;
     }
     const newEntry = {
@@ -86,7 +85,7 @@ const App = () => {
   return (
     <div>
       <form onSubmit={submitForm}>
-        <div>
+        
           <h1>Full Name Display</h1>
           <label htmlFor="firstName">First Name</label>
           <input
@@ -97,9 +96,8 @@ const App = () => {
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-        </div>
+       
 
-        <div>
           <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
@@ -109,18 +107,18 @@ const App = () => {
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-        </div>
+    
 
         <button type="submit">Submit</button>
       </form>
 
-      <div>
+      
         {allEntries.map((entry) => (
           <div key={entry.id}>
             <p>Full Name: {entry.firstName} {entry.lastName}</p>
           </div>
         ))}
-      </div>
+     
     </div>
   );
 };
