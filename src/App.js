@@ -77,8 +77,8 @@ const App = () => {
       lastName: lastName,
     };
     setAllEntries([...allEntries, newEntry]);
-    setFirstName("");
-    setLastName("");
+    // setFirstName("");
+    // setLastName("");
   };
 
   return (
@@ -113,9 +113,9 @@ const App = () => {
 
       
         {allEntries.map((entry) => (
-          <div key={entry.id}>
+          // <div key={entry.id}>
             <p>Full Name: {entry.firstName} {entry.lastName}</p>
-          </div>
+          // </div>
         ))}
      
     </div>
