@@ -67,13 +67,12 @@ const App = () => {
   const [lastName, setLastName] = useState("");
   const [allEntries, setAllEntries] = useState([]);
 
-  const submitForm = (e) => {
-    e.preventDefault();
+  const submitForm = (event) => {
+    event.preventDefault();
     if (firstName.trim() === "" || lastName.trim() === "") {
       return;
     }
     const newEntry = {
-      id: new Date().getTime().toString(),
       firstName: firstName,
       lastName: lastName,
     };
